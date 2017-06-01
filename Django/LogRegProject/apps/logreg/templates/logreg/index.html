@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <title>Log and Registration</title>
+    <link rel="stylesheet" href="{% static 'logreg/css/materialize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'logreg/css/materialize_icons.css' %}">
+  	<script src="{% static 'logreg/js/jquery-2.2.3.js' %}"></script>
+  	<script src="{% static 'logreg/js/jquery-ui.js' %}"></script>
+  	<script src="{% static 'logreg/js/materialize.js' %}"></script>
+  </head>
+  <body>
+    <header class="blue">
+      <nav class="blue">
+        <a class="brand-logo" href="#">Welcom to Loging and Registration</a>
+      </nav>
+    </header>
+    <main class="container section">
+      {% if messages %}
+      <div class="row">
+      {% for message in messages %}
+      <p class="red white-text col s6 offset-s3">{{message}}</p>
+      {% endfor %}
+      {% endif %}
+      <section class="row">
+        <form class="col s6" action="{% url 'logreg:register' %}" method="post">
+          {% csrf_token %}
+          <input type="text" name="first_name" placeholder="First Name">
+          <input type="text" name="last_name" placeholder="Last Name">
+          <input type="email" name="email" placeholder="Something@thisplace.com">
+          <input type="password" name="password" placeholder="Password ********">
+          <input type="password" name="confirmpass" placeholder="Confirm Password">
+          <button type="submit" name="chocolate" value="register" class="btn">Register</button>
+        </form>
+        <form class="col s6" action="{% url 'logreg:login' %}" method="post">
+          {% csrf_token %}
+          <input type="email" name="email" placeholder="Something@thisplace.com">
+          <input type="password" name="password" placeholder="Password ********">
+          <button type="submit" name="chocolate" value="login" class="btn">Login</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

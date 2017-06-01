@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <title>Success!</title>
+    <link rel="stylesheet" href="{% static 'logreg/css/materialize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'logreg/css/materialize_icons.css' %}">
+    <script src="{% static 'logreg/js/jquery-2.2.3.js' %}"></script>
+    <script src="{% static 'logreg/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'logreg/js/materialize.js' %}"></script>
+  </head>
+  <body>
+    <nav class="green">
+      <ul class="right">
+        <li><a href="{% url 'logreg:logout' %}">Logout</a></li>
+      </ul>
+    </nav>
+    <main class="container">
+      <h3>Welcome {{request.session.user.first_name}} to the Success Page!</h3>
+
+      <h4>All Registed Users</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if users %}
+          {% for user in users %}
+          <tr>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

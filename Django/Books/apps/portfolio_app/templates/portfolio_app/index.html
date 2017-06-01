@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <title>Welcome to Portfolio Page</title>
+    <link rel="stylesheet" href="{% static 'portfolio_app/css/materialize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'logreg/css/materialize_icons.css' %}">
+    <script src="{% static 'logreg/js/jquery-2.2.3.js' %}"></script>
+  	<script src="{% static 'logreg/js/jquery-ui.js' %}"></script>
+  	<script src="{% static 'logreg/js/materialize.js' %}"></script>
+  </head>
+  <body>
+    <header class="blue">
+      <nav class="blue">
+        <h3><center>Welcome to {authors.first_name}}Portfolio Page</center></h3>
+      </nav>
+    </header>
+    <main class="container section">
+      <section class="row">
+        <form class="col s6" action="" method="post">
+          {% csrf_token %}
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
